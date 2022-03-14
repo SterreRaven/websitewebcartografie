@@ -3,13 +3,16 @@
 <head>
     <title>Home</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 </head>
-<body>
+<body onload="loaded();">
+    
+    <!--Header-->
     <div id="header">
-        <div class="bg-img">
+        <div class="bg-img" style="background-image: url('img/headerMountains.png');">
             <div class="container">
               <div class="topnav">
                 <a href="index.html">HOME</a>
@@ -18,21 +21,40 @@
               </div>
             </div>
         </div>
-
-        <div class="hero-text">
-            <h1 style="font-size:80px">HIKING TRAILS <br> EUROPE</h1>
-        </div>
     </div>
 
-        <h2>Popular routes</h2>
-        <div id="map"></div>
-            <script>
-            var map = L.map('map').setView([0, 0], 1);
-            L.tileLayer('https://api.maptiler.com/maps/pastel/256/{z}/{x}/{y}.png?key=nTenkvsXcUxOseVIciCJ', {
-            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
-            }).addTo(map); 
-            var marker = L.marker([59.334591, 18.063240]).addTo(map);
-            marker.bindPopup("<b>Sweden</b><br>Trail 1.").openPopup();
-            </script>
+    <section>
+        <a href="#" class="scroll-down" address="true"></a>
+    </section>
+    <section class="chart">
+    </section>
+
+    <!--Map-->
+    <div id="map"></div>
+    <script src="js/javascript.js"></script>
+    
+    <!--Chart-->
+    <div class="chart">
+    <canvas id="myChart"></canvas><script src="js/javascript.js"></script>
+    </div>    
+
+    <div>
+        <button 
+        class="button" 
+        id="zoomInSoesterberg"
+        onclick="zoomInOnClick(52.119339, 5.282440)"
+        >Zoom naar Soesterberg</button>
+    
+        <button 
+        class="button" 
+        id="zoomInAlmere"
+        onclick="zoomInOnClick(52.371353, 5.222124)"
+        >Zoom naar Almere</button>
+        </div>
+
+    <div class="hoogteKungsleden">
+    <iframe title="Hoogteprofiel" aria-label="Interactive area chart" id="datawrapper-chart-5jfHd" src="https://datawrapper.dwcdn.net/5jfHd/1/" scrolling="no" frameborder="0" width="700" height="400"></iframe>
+    </div>
 </body>
 </html>
+
